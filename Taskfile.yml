@@ -1,0 +1,55 @@
+# https://taskfile.dev
+
+version: "3"
+
+vars:
+  SRC_DIR: src
+  LICENSE_FILE: LICENSE.txt
+  README_FILE: README.md
+  MAIN_FILE: main.c
+  TEST_FILE: tests.c
+  INCLUDE_FILES: lib/my_lib.c lib/my_math.c
+  OUT_DIR: bin
+  OUT_FILE: output
+
+tasks:
+  default:
+    desc: Lists available tasks.
+    cmds:
+      - task --list-all
+    silent: true
+  license:
+    desc: Displays the license.
+    cmds:
+      - cat {{.LICENSE_FILE}}
+    silent: true
+  readme:
+    desc: Displays the README file.
+    cmds:
+      - cat {{.README_FILE}}
+    silent: true
+  run:
+    desc: Runs '{{.MAIN_FILE}}'.
+    dir: "{{.SRC_DIR}}"
+    cmds:
+      - zig run {{.MAIN_FILE}} {{.INCLUDE_FILES}}
+    silent: true
+  clean:
+    desc: Cleans the build output files in '{{.OUT_DIR}}' directory.
+    cmds:
+      - rm -rf {{.OUT_DIR}}
+    silent: true
+  build:
+    desc: Builds the main binary to the '{{.OUT_DIR}}' directory.
+    dir: "{{.SRC_DIR}}"
+    cmds:
+      - mkdir -p ../{{.OUT_DIR}}
+      - zig cc {{.MAIN_FILE}} {{.INCLUDE_FILES}} -o '../{{.OUT_DIR}}/{{.OUT_FILE}}'
+    silent: true
+  test:
+    desc: Runs the C-based tests.
+    dir: "{{.SRC_DIR}}"
+    cmds:
+      - clear
+      - zig run {{.TEST_FILE}} {{.INCLUDE_FILES}}
+    silent: true
