@@ -2,7 +2,7 @@
 
 This is a simple C template I use for new projects. It assumes [Zig](https://ziglang.org/) and [Task](https://taskfile.dev/) are installed.
 
-Zig is used as the compiler / runner of the C code while Task is used instead of Make. Why? Because I like Task, that's why!
+Zig is used as the compiler / runner of the C code while Task is used instead of the traditional Make file. Why? Because I like Task, that's why!
 
 ## Zig
 
