@@ -28,6 +28,10 @@ Use `task` by itself in the terminal to get a list of available tasks. Some of t
 
 If you are interested, you also look at [using the Zig build system](https://github.com/allyourcodebase) as a really nice replacement for traditional `make` files. Zig is a great toolchain and programming language, but you don't need to use Zig for your C projects if you don't want to. Instead, you can leverage the power of the toolchain with this project and keep using C as your favourite language.
 
+I have included a sample `build.zig` file that handles basic build tasks for this C project.
+
+Use `zig build` to build the `hello_from_zig_build` binary in the `zig-out/bin` directory. I have not yet been able to get Zig to place binaries anywhere else.
+
 ### What about make
 
 Of course, `make` is not going anywhere, so I've included an example `Makefile` as well, for those that prefer to keep using it, it is a well-known and powerful tool after all.
